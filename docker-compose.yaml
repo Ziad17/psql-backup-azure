@@ -11,13 +11,13 @@ services:
       - 4444:80
     restart: always
     environment:
-      - AZURE_BLOBS_CONNECTION=DefaultEndpointsProtocol=https;AccountName=vizage;AccountKey=Y53ELMSKwZG6BFe2MzXTwCXbs4yMYju7Aoac6olWLD3ZPSd6+q++mSKqaW7XmkZewcG7IMDFZ/UO+AStFKkgCA==;EndpointSuffix=core.windows.net
-      - AZURE_BLOBS_CONTAINER=dev
+      - AZURE_BLOBS_CONNECTION= container connection string
+      - AZURE_BLOBS_CONTAINER=container name
       - BACKUP_REPEAT_IN_HOURS=24
-      - HOST=192.46.212.10
-      - PORT=5432
-      - USER_NAME=postgres
-      - PASSWORD=GSMakMOOUM9x9A8K6q3LsElUJbu9beB4
-      - BACKUP_FILE_PATH=/var/www
-      - DATABASES=Vizage-[dev]
-      - PG_DUMP_PATH=/usr/bin/pg_dump
+      - HOST=Db host
+      - PORT=Db port
+      - USER_NAME=Db username
+      - PASSWORD=Db password
+      - BACKUP_FILE_PATH=/path/to/folder
+      - DATABASES=comma seperated strings
+      - PG_DUMP_PATH=/path/to/folder
