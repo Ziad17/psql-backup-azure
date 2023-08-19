@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: psql-backup
+    container_name: psql-backup
+    ports:
+      - 4444:80
+    restart: always
+    environment:
+      - AZURE_BLOBS_CONNECTION= container connection string
+      - AZURE_BLOBS_CONTAINER=container name
+      - BACKUP_REPEAT_IN_HOURS=24
+      - HOST=Db host
+      - PORT=Db port
+      - USER_NAME=Db username
+      - PASSWORD=Db password
+      - BACKUP_FILE_PATH=/path/to/folder
+      - DATABASES=comma seperated strings
+      - PG_DUMP_PATH=/path/to/folder

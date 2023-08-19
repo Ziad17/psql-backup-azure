@@ -8,7 +8,7 @@
         /// <value>
         /// The repeat in hours. for example every 24 Hours
         /// </value>
-        public int RepeatInHours { get; set; }
+        public string RepeatInHours { get; set; }
 
         /// <summary>
         /// Gets or sets the host of the database server e.g. (127.0.0.1)

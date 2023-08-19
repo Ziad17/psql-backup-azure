@@ -2,9 +2,10 @@ using Postgres.Azure.Backup;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
-builder.Services.AddStorage(builder.Configuration);
-builder.Services.AddAutomaticBackup(builder.Configuration);
+builder.Services.AddAutomaticBackup();
 
 var app = builder.Build();
 

@@ -7,11 +7,11 @@ namespace Postgres.Azure.Backup
 {
     public class BackupService
     {
-        private readonly ILogger<BackupService> _logger;
+        private readonly ILogger _logger;
         private readonly AutoBackupConfiguration _configuration;
         private readonly IStorageService _storageService;
 
-        public BackupService(ILogger<BackupService> logger, AutoBackupConfiguration configuration, IStorageService storageService)
+        public BackupService(ILogger logger, AutoBackupConfiguration configuration, IStorageService storageService)
         {
             _logger = logger;
             _configuration = configuration;
@@ -32,6 +32,7 @@ namespace Postgres.Azure.Backup
                 {
                     var fileName = database + "_backup_" + DateTime.UtcNow.ToString("yyyy-MM-dd_HH:mm") + ".sql";
 
+                    Directory.CreateDirectory(_configuration.BackupFilePath);
                     var originalFile = File.Create(_configuration.BackupFilePath + "/" + fileName);
                     originalFile.Close();
 
