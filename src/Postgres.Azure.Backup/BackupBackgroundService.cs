@@ -4,9 +4,9 @@
     {
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly AutoBackupConfiguration _configuration;
-        private readonly ILogger<BackupBackgroundService> _logger;
+        private readonly ILogger _logger;
 
-        public BackupBackgroundService(IServiceScopeFactory scopeFactory, AutoBackupConfiguration configuration, ILogger<BackupBackgroundService> logger)
+        public BackupBackgroundService(IServiceScopeFactory scopeFactory, AutoBackupConfiguration configuration, ILogger logger)
         {
             _scopeFactory = scopeFactory;
             _configuration = configuration;
@@ -25,7 +25,7 @@
                     await service.BackupAsync();
                 }
 
-                await Task.Delay(TimeSpan.FromHours(_configuration.RepeatInHours), stoppingToken);
+                await Task.Delay(TimeSpan.FromHours(int.Parse(_configuration.RepeatInHours)), stoppingToken);
             }
         }
     }
